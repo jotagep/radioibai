@@ -61,7 +61,7 @@ export default function Seo () {
       <meta property="og:url" content={metaUrl} />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
-      <meta property="og:type" content={"website" />
+      <meta property="og:type" content={"website"} />
       <meta property="og:image" content={imageSeo} />
 
       <meta name="twitter:card" content="summary_large_image" />
