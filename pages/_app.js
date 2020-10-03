@@ -3,9 +3,10 @@ import Seo from '../components/Seo'
 
 function MyApp({ Component, pageProps }) {
   return (
-  <Seo>
-    <Component {...pageProps} />
-  </Seo>
+    <>
+      <Seo />
+      <Component {...pageProps} />
+    </>
   );
 }
 

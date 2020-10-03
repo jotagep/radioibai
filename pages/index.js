@@ -15,7 +15,7 @@ const opts = {
   },
 }
 
-export default function Home() {
+export default function Index() {
   const [showTwitch, setShowTwitch] = useState(true)
   const [showChat, setShowChat] = useState(true)
 
