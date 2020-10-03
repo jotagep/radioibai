@@ -1,65 +1,86 @@
-import Head from 'next/head'
+import { useState, useRef } from "react"
+
+import Draggable from 'react-draggable'; // The default
+import Youtube from 'react-youtube'
+
 import styles from '../styles/Home.module.css'
 
+const opts = {
+  title: 'Live',
+  height: '100%',
+  width: '100%',
+  playerVars: {
+    autoplay: 1,
+    mute: 0,
+  },
+}
+
 export default function Home() {
+  const [showTwitch, setShowTwitch] = useState(true)
+  const [showChat, setShowChat] = useState(true)
+
+  let YT = null
+
+  const ytRef = useRef()
+
+  const handleTwitch = () => {
+    setShowTwitch(state => !state)
+  }
+  const handleChat= (e) => {
+    setShowChat(state => !state)
+  }
+
+ const handleYT = (e) => {
+   YT = e.target;
+ }
+
+ const handlePause = () => {
+   if (YT) {
+     const state = YT.getPlayerState()
+     if (state == 1) {
+       YT.pauseVideo()
+     } else {
+       YT.playVideo()
+     }
+   }
+ }
+
+ const handleDuration = (number) => (e) => {
+  if (YT) {
+    const time = YT.getCurrentTime() + number;
+    console.log(YT.getCurrentTime(), time)
+    YT.seekTo(time);
+ }
+}
+
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <div className={styles.youtube}>
+        <Youtube videoId="bqIlL9cv3UU" containerClassName={styles.youtubeBox} opts={opts} onReady={handleYT} />
+      </div>
+      <div className={styles.chat} style={{display: showChat ? 'block':'none'}}>
+        <iframe ref={ytRef} src="https://www.twitch.tv/embed/ibai/chat?darkpopout&amp;parent=radioibai.world" width="100%" height="100%" frameBorder="0" allowFullScreen=""></iframe>
+      </div>
+      <Draggable bounds="parent">
+        <div className={styles.twitch} style={{display: showTwitch ? 'block':'none'}}>
+          <header className={styles['twitch-header']}>
+            twitch.tv/ibai
+          </header>
+          <iframe src="https://player.twitch.tv/?channel=ibai&amp;parent=radioibai.world&amp;muted=false&amp;autoplay=true" height="192" width="340" frameBorder="0"></iframe>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      </Draggable>
+      <div className={styles.controls}>
+        <button onClick={handleTwitch} className={`${styles.btn} ${!showTwitch ? styles.active : ''}`}>Twitch</button>
+        <button onClick={handleChat} className={`${styles.btn} ${!showChat ? styles.active : ''}`}>Chat</button>
+        <span className="mr">|</span>
+        <button onClick={handleDuration(-5)} className={styles.btn}>-5</button>
+        <button onClick={handleDuration(-1)} className={styles.btn}>-1</button>
+        <button onClick={handlePause} className={styles.btn}>
+          <img src="/arrow.svg" alt="play/pause" />
+        </button>
+        <button onClick={handleDuration(+1)} className={styles.btn}>+1</button>
+        <button onClick={handleDuration(+5)} className={styles.btn}>+5</button>
+      </div>
     </div>
   )
 }
