@@ -3,7 +3,7 @@ import Head from "next/head"
 export default function Seo () {
   const path = 'https://radioibai.world'
   const pageTitle = 'Radio Ibai Worlds 2020 - Todo el Mundial de League of Legends'
-  const pageDescription = 'Radio Ibai Worlds 2020, todo el mundial de League of Legends "LOL" 2020 comentado por Ibai, Ander, BarbeQ, Future, Reven, Werlyb, ElMillor, Miniduke, Kuentin y muchos más'
+  const pageDescription = "Radio Ibai Worlds 2020, todo el mundial de League of Legends 'LOL' 2020 comentado por Ibai, Ander, BarbeQ, Future, Reven, Werlyb, ElMillor, Miniduke, Kuentin y muchos más"
 
   const metaUrl = `${path}`
   const metaTitle = pageTitle
