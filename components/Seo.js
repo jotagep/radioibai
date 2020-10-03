@@ -46,7 +46,7 @@ export default function Seo () {
       <meta charSet="utf-8" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <title>
-        {isHome ? metaTitle : `${metaTitle} | ${process.env.title}`}
+        {metaTitle}
       </title>
       <link rel="canonical" href={metaUrl} />
       <meta name="description" content={metaDescription} />
