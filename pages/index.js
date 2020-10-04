@@ -11,7 +11,7 @@ const opts = {
   width: '100%',
   playerVars: {
     autoplay: 1,
-    mute: 0,
+    mute: 1,
   },
 }
 
@@ -66,7 +66,7 @@ export default function Index() {
           <header className={styles['twitch-header']}>
             twitch.tv/ibai
           </header>
-          <iframe src="https://player.twitch.tv/?channel=ibai&amp;parent=radioibai.world&amp;muted=false&amp;autoplay=true" height="192" width="340" frameBorder="0"></iframe>
+          <iframe src="https://player.twitch.tv/?channel=ibai&amp;parent=radioibai.world&amp;muted=false&amp;autoplay=true" height="100%" width="100%" frameBorder="0"></iframe>
         </div>
       </Draggable>
       <div className={styles.controls}>
