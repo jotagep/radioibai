@@ -56,7 +56,7 @@ export default function Index() {
   return (
     <div className={styles.container}>
       <div className={styles.youtube}>
-        <Youtube videoId="bqIlL9cv3UU" containerClassName={styles.youtubeBox} opts={opts} onReady={handleYT} />
+        <Youtube videoId="OmSiJDNVs0I" containerClassName={styles.youtubeBox} opts={opts} onReady={handleYT} />
       </div>
       <div className={styles.chat} style={{display: showChat ? 'block':'none'}}>
         <iframe ref={ytRef} src="https://www.twitch.tv/embed/ibai/chat?darkpopout&amp;parent=radioibai.world" width="100%" height="100%" frameBorder="0" allowFullScreen=""></iframe>
