@@ -48,8 +48,7 @@ export default function Index() {
  const handleDuration = (number) => (e) => {
   if (YT) {
     const time = YT.getCurrentTime() + number;
-    console.log(YT.getCurrentTime(), time)
-    YT.seekTo(time);
+    YT.seekTo(time, true);
  }
 }
 
@@ -73,13 +72,13 @@ export default function Index() {
         <button onClick={handleTwitch} className={`${styles.btn} ${!showTwitch ? styles.active : ''}`}>Twitch</button>
         <button onClick={handleChat} className={`${styles.btn} ${!showChat ? styles.active : ''}`}>Chat</button>
         <span className="mr">|</span>
-        <button onClick={handleDuration(-5)} className={styles.btn}>-5</button>
-        <button onClick={handleDuration(-1)} className={styles.btn}>-1</button>
+        <button onClick={handleDuration(-5)} className={styles.btn}>-5s</button>
+        <button onClick={handleDuration(-1)} className={styles.btn}>-1s</button>
         <button onClick={handlePause} className={styles.btn}>
           <img src="/arrow.svg" alt="play/pause" />
         </button>
-        <button onClick={handleDuration(+1)} className={styles.btn}>+1</button>
-        <button onClick={handleDuration(+5)} className={styles.btn}>+5</button>
+        <button onClick={handleDuration(1)} className={styles.btn}>+1s</button>
+        <button onClick={handleDuration(5)} className={styles.btn}>+5s</button>
       </div>
     </div>
   )
