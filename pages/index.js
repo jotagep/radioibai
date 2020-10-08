@@ -6,7 +6,7 @@ import Youtube from 'react-youtube'
 import styles from '../styles/Home.module.css'
 
 const opts = {
-  title: 'Live',
+  title: 'Live Worlds',
   height: '100%',
   width: '100%',
   playerVars: {
