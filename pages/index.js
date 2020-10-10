@@ -10,6 +10,7 @@ const opts = {
   height: '100%',
   width: '100%',
   playerVars: {
+    channel: 'UCvqRdlKsE5Q8mf8YXbdIJLw',
     autoplay: 1,
     mute: 1,
   },
@@ -55,7 +56,7 @@ export default function Index() {
   return (
     <div className={styles.container}>
       <div className={styles.youtube}>
-        <Youtube videoId="Y0dqlyNgrDQ" containerClassName={styles.youtubeBox} opts={opts} onReady={handleYT} />
+        <Youtube videoId="live_stream" containerClassName={styles.youtubeBox} opts={opts} onReady={handleYT} />
       </div>
       <div className={styles.chat} style={{display: showChat ? 'block':'none'}}>
         <iframe ref={ytRef} src="https://www.twitch.tv/embed/ibai/chat?darkpopout&amp;parent=radioibai.world" width="100%" height="100%" frameBorder="0" allowFullScreen=""></iframe>
